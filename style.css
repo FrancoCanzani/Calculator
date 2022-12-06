@@ -26,7 +26,7 @@
     width: 85%;
     padding: 5px;
     background-color: black;
-    border: 3px solid rgb(255, 255, 255);
+    outline: thick double #ffffff;    
     border-radius: 5px;
     margin-top: 5%;
     text-align: end;
@@ -77,6 +77,16 @@ button:active {
     background-color: #2ecc71;
     box-shadow: 0 5px #95a5a6;
     transform: translateY(4px);
+}
+
+.github{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    height: 75%;
+    width: 70%;
 }
 
 /* Note to self 

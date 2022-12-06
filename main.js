@@ -66,23 +66,14 @@ const seven = document.querySelector('#seven');
 const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 const ac = document.querySelector('#ac');
-const on = document.querySelector('#on')
+const off = document.querySelector('#off')
 
-let firstVal = undefined;
+let firstVal;
 
-let onOff = function() {
-    if(firstVal == undefined) {
-        on.addEventListener('click', function() {
-            firstVal = '0';
-            display.innerHTML = firstVal;
-        })
-    } else {
-        on.addEventListener('click', function() {
-            firstVal;
-            display.innerHTML = firstVal;
-        })
-    }
-}
+off.addEventListener('click', function() {
+    firstVal = '';
+    display.innerHTML = firstVal;
+})
 
 ac.addEventListener('click', function() {
     firstVal = '0';
