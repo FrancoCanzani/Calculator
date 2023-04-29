@@ -1,30 +1,35 @@
 import React from 'react';
 
 import NumberButton from './NumberButton';
-import OperationButton from './OperationButton';
+import OperatorButton from './OperatorButton';
+import EqualButton from './EqualButton';
 
-export default function Keypad({ handleConcat }) {
+export default function Keypad({
+  handleConcat,
+  handleOperation,
+  handleOperator,
+}) {
   return (
     <div className='flex flex-wrap items-center justify-center'>
       <NumberButton num={7} handleConcat={handleConcat} />
       <NumberButton num={8} handleConcat={handleConcat} />
       <NumberButton num={9} handleConcat={handleConcat} />
-      <OperationButton operation={'÷'} />
+      <OperatorButton operator={'÷'} handleOperator={handleOperator} />
 
       <NumberButton num={4} handleConcat={handleConcat} />
       <NumberButton num={5} handleConcat={handleConcat} />
       <NumberButton num={6} handleConcat={handleConcat} />
-      <OperationButton operation={'x'} />
+      <OperatorButton operator={'x'} handleOperator={handleOperator} />
 
       <NumberButton num={1} handleConcat={handleConcat} />
       <NumberButton num={2} handleConcat={handleConcat} />
       <NumberButton num={3} handleConcat={handleConcat} />
-      <OperationButton operation={'-'} />
+      <OperatorButton operator={'-'} handleOperator={handleOperator} />
 
       <NumberButton num={0} handleConcat={handleConcat} />
       <NumberButton num={'.'} handleConcat={handleConcat} />
-      <OperationButton operation={'='} />
-      <OperationButton operation={'+'} />
+      <EqualButton handleOperation={handleOperation} />
+      <OperatorButton operator={'+'} handleOperator={handleOperator} />
     </div>
   );
 }

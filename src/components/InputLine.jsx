@@ -11,7 +11,7 @@ export default function ScreenDisplay({ numberDisplay }) {
 
   return (
     <p
-      className='mb-4 h-20 w-full overflow-hidden rounded-md bg-slate-900 px-2 py-1 text-right text-6xl text-white shadow-md shadow-purple-300'
+      className='mb-4 h-20 w-full items-center overflow-hidden rounded-md border-4 border-slate-600 bg-slate-900 px-2 py-1 text-right text-6xl text-white shadow-md shadow-purple-300'
       style={{ whiteSpace: 'nowrap' }}
       ref={pRef}
     >
