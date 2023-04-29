@@ -1,8 +1,11 @@
 import React from 'react';
 
-export default function NumberButton({ num }) {
+export default function NumberButton({ num, handleConcat }) {
   return (
-    <button className='mb-2 mr-2 rounded-md bg-slate-600 px-6 py-2 text-5xl text-white'>
+    <button
+      className='m-auto mb-3 h-16 w-16 rounded-md bg-slate-600 px-5 text-5xl text-white hover:bg-slate-500 active:translate-y-1'
+      onClick={() => handleConcat(num)}
+    >
       {num}
     </button>
   );
