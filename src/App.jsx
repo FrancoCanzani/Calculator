@@ -11,6 +11,16 @@ function App() {
   const [valueToDisplay, setValueToDisplay] = useState(firstValue);
 
   function handleConcat(num) {
+    if (
+      num === '.' &&
+      (valueToDisplay.includes('.') ||
+        (operation === null && firstValue.length === 0))
+    ) {
+      // If the dot button is pressed and the number already contains a dot or the first value is empty and the dot is pressed,
+      // then do not add a dot to the number
+      return;
+    }
+
     if (operation === null) {
       setFirstValue([...firstValue, num]);
       setValueToDisplay([...firstValue, num]);
@@ -55,7 +65,7 @@ function App() {
 
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-indigo-100'>
-      <div className='flex h-3/5 max-w-xs flex-col items-center justify-center rounded-md border-4 border-slate-500 p-2'>
+      <div className='flex h-3/5 max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
         <InputLine numberDisplay={valueToDisplay.join('')} />
         <Keypad
           handleConcat={handleConcat}
