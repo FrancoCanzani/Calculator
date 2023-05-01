@@ -32,30 +32,31 @@ function App() {
 
   function handleOperator(operator) {
     setOperation(operator);
-    setValueToDisplay(secondValue.length > 0 ? secondValue : firstValue);
+    setValueToDisplay(secondValue.length ? secondValue : firstValue);
   }
 
   function handleOperation() {
     let result;
     switch (operation) {
       case '+': {
-        result = Number(firstValue.join('')) + Number(secondValue.join(''));
+        result = parseInt(firstValue.join('')) + parseInt(secondValue.join(''));
         break;
       }
       case '-': {
-        result = Number(firstValue.join('')) - Number(secondValue.join(''));
+        result = parseInt(firstValue.join('')) - parseInt(secondValue.join(''));
         break;
       }
       case '÷': {
-        result = Number(firstValue.join('')) / Number(secondValue.join(''));
+        result = parseInt(firstValue.join('')) / parseInt(secondValue.join(''));
         break;
       }
       case 'x': {
-        result = Number(firstValue.join('')) * Number(secondValue.join(''));
+        result = parseInt(firstValue.join('')) * parseInt(secondValue.join(''));
         break;
       }
       default: {
-        throw Error('Unknown action: ' + operation);
+        result = NaN;
+        break;
       }
     }
     setFirstValue([result]);
@@ -63,14 +64,36 @@ function App() {
     setValueToDisplay([result.toString()]);
   }
 
+  function handleResetValue() {
+    if (operation === null) {
+      setFirstValue([]);
+      setValueToDisplay([]);
+    } else {
+      setSecondValue([]);
+      setValueToDisplay([]);
+    }
+  }
+
+  function handleClear() {
+    setFirstValue([]);
+    setSecondValue([]);
+    setOperation(null);
+    setValueToDisplay([]);
+  }
+
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-indigo-100'>
-      <div className='flex h-3/5 max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
-        <InputLine numberDisplay={valueToDisplay.join('')} />
+      <div className='flex min-h-fit max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
+        <InputLine
+          operation={operation}
+          numberDisplay={valueToDisplay.join('')}
+        />
         <Keypad
           handleConcat={handleConcat}
           handleOperation={handleOperation}
           handleOperator={handleOperator}
+          handleResetValue={handleResetValue}
+          handleClear={handleClear}
         />
       </div>
     </div>
