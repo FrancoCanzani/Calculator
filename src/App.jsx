@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // Components
 import InputLine from './components/InputLine';
 import Keypad from './components/Keypad';
+import { GoMarkGithub } from 'react-icons/go';
 
 function App() {
   const [firstValue, setFirstValue] = useState([]);
@@ -81,9 +82,21 @@ function App() {
     setValueToDisplay([]);
   }
 
+  function handleDelete() {
+    if (operation === null && firstValue.length > 0) {
+      const newValue = firstValue.slice(0, -1);
+      setFirstValue(newValue);
+      setValueToDisplay(newValue);
+    } else if (secondValue.length > 0) {
+      const newValue = secondValue.slice(0, -1);
+      setSecondValue(newValue);
+      setValueToDisplay(newValue);
+    }
+  }
+
   return (
     <div className='flex h-screen w-screen items-center justify-center bg-indigo-100'>
-      <div className='flex min-h-fit max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
+      <div className='relative flex min-h-fit max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
         <InputLine
           operation={operation}
           numberDisplay={valueToDisplay.join('')}
@@ -94,8 +107,14 @@ function App() {
           handleOperator={handleOperator}
           handleResetValue={handleResetValue}
           handleClear={handleClear}
+          handleDelete={handleDelete}
         />
       </div>
+      <footer className='absolute bottom-0 left-0 right-0 flex items-center justify-center bg-gray-100 py-2 text-center'>
+        <a href='https://github.com/FrancoCanzani/Calculator' target='blank'>
+          <GoMarkGithub style={{ fontSize: '30px' }} />
+        </a>
+      </footer>
     </div>
   );
 }

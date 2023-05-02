@@ -4,7 +4,7 @@ import NumberButton from './buttons/NumberButton';
 import OperatorButton from './buttons/OperatorButton';
 import EqualButton from './buttons/EqualButton';
 import DotButton from './buttons/DotButton';
-import FunctionalButtons from './FunctionalButtons';
+import UtilityButtons from './UtilityButtons';
 
 export default function Keypad({
   handleConcat,
@@ -12,12 +12,14 @@ export default function Keypad({
   handleOperator,
   handleResetValue,
   handleClear,
+  handleDelete,
 }) {
   return (
     <div className='flex flex-wrap items-center justify-center'>
-      <FunctionalButtons
+      <UtilityButtons
         handleResetValue={handleResetValue}
         handleClear={handleClear}
+        handleDelete={handleDelete}
       />
 
       <NumberButton num={7} handleConcat={handleConcat} />
