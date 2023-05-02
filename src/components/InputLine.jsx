@@ -9,6 +9,18 @@ export default function ScreenDisplay({ numberDisplay, operation }) {
     p.scrollLeft = p.scrollWidth - p.clientWidth;
   }, [numberDisplay]);
 
+  let displayValue = '';
+  if (numberDisplay) {
+    const decimalIndex = numberDisplay.indexOf('.');
+    if (decimalIndex === -1 || decimalIndex < 8) {
+      // display entire number if it has less than 8 digits or contains a decimal point
+      displayValue = numberDisplay.substring(0, 9);
+    } else {
+      // truncate to 8 digits if it has more than 8 digits
+      displayValue = numberDisplay.slice(0, 9);
+    }
+  }
+
   return (
     <div className='mb-3 h-24 w-full'>
       <div className='relative'>
@@ -22,7 +34,7 @@ export default function ScreenDisplay({ numberDisplay, operation }) {
         style={{ whiteSpace: 'nowrap' }}
         ref={pRef}
       >
-        {numberDisplay}
+        {displayValue}
       </p>
     </div>
   );

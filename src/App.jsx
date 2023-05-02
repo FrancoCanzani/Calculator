@@ -65,6 +65,21 @@ function App() {
     setValueToDisplay([result.toString()]);
   }
 
+  function handlePercentage() {
+    const currentValue = parseFloat(valueToDisplay.join(''));
+    let newValue;
+
+    // If the percentage button has not been clicked before, divide by 100
+    if (!valueToDisplay.includes('%')) {
+      newValue = currentValue / 100;
+      setValueToDisplay([newValue.toString(), '%']);
+    } else {
+      // If the percentage button has been clicked before, remove the '%' sign and divide again
+      newValue = currentValue / 100;
+      setValueToDisplay([newValue.toString(), '%']);
+    }
+  }
+
   function handleResetValue() {
     if (operation === null) {
       setFirstValue([]);
@@ -95,7 +110,7 @@ function App() {
   }
 
   return (
-    <div className='flex h-screen w-screen items-center justify-center bg-indigo-100'>
+    <div className='flex h-screen w-screen items-center justify-center overflow-x-hidden bg-indigo-100'>
       <div className='relative flex min-h-fit max-w-xs flex-col items-center justify-center rounded-md border-8 border-slate-500 p-2 shadow-lg shadow-slate-600'>
         <InputLine
           operation={operation}
@@ -108,6 +123,7 @@ function App() {
           handleResetValue={handleResetValue}
           handleClear={handleClear}
           handleDelete={handleDelete}
+          handlePercentage={handlePercentage}
         />
       </div>
       <footer className='absolute bottom-0 left-0 right-0 flex items-center justify-center bg-gray-100 py-2 text-center'>

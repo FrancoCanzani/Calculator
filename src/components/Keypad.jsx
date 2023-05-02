@@ -13,6 +13,7 @@ export default function Keypad({
   handleResetValue,
   handleClear,
   handleDelete,
+  handlePercentage,
 }) {
   return (
     <div className='flex flex-wrap items-center justify-center'>
@@ -20,6 +21,7 @@ export default function Keypad({
         handleResetValue={handleResetValue}
         handleClear={handleClear}
         handleDelete={handleDelete}
+        handlePercentage={handlePercentage}
       />
 
       <NumberButton num={7} handleConcat={handleConcat} />
